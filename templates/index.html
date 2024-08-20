@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Teamwork</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+
+</head>
+
+    <div class="navbar">
+        <div class="logo">
+            <a href="#" style="color: hwb(240 93% 4%);">
+                <img src="{{ url_for('static', filename='image/log2.jpeg') }}" alt="TechnoInsight Logo" style="height: 50px;">
+            </a>
+        </div>
+        
+        <div class="menu">
+            <a href="/">Home</a>
+            <a href="/signup">Sign Up</a>
+            <a href="/login">Log In </a>
+            <a href="/about">About Us</a>
+        </div>
+    </div>
+    <div class="hero">
+        <h1>Welcome to Our Employees Teamwork</h1>
+        <p>Teamwork is an internal social network for organizations’ employees.<br>
+            The goal of this application is to facilitate more interaction <br>between
+             colleagues and facilitate team bonding.!</p>
+             
+    </div>
+    <img src="{{ url_for('static', filename='image/hero1.jpeg') }}" style="width:100%;height: auto; ">
+    <div class="footer">
+        <p>&copy; 2024 TechInsight. All rights reserved.</p>
+    </div>
+</body>
+</html>
+

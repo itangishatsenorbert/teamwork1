@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{{ article.title }}</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        h2 {
+            color: #333;
+        }
+        p {
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+        .actions {
+            margin: 20px 0;
+        }
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            margin-right: 10px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        .comment-section {
+            margin-top: 40px;
+        }
+        .comment-section h3 {
+            color: #333;
+        }
+        .comment-section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .comment-section li {
+            background: #fff;
+            margin: 10px 0;
+            padding: 15px;
+            border-radius: 4px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+        }
+        textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
+        }
+    </style>
+</head>
+<body>
+
+<h2>{{ article.title }}</h2>
+<p>{{ article.content }}</p>
+
+<div class="actions">
+    <a href="/edit_article/{{ article.id }}"><button>Edit</button></a>
+    <form action="/delete_article/{{ article.id }}" method="POST" style="display:inline;">
+        <button type="submit">Delete</button>
+    </form>
+</div>
+
+<div class="comment-section">
+    <h3>Comments</h3>
+    <ul>
+        {% for comment in comments %}
+        <li>{{ comment.content }}</li>
+        {% endfor %}
+    </ul>
+
+    <h4>Add a comment</h4>
+    <form method="POST">
+        <textarea name="content" rows="4" required></textarea>
+        <button type="submit">Submit</button>
+    </form>
+</div>
+
+</body>
+</html>

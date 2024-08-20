@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f9f9f9;
+        }
+        .container {
+            max-width: 800px;
+            margin: 10px auto;
+            background: #fff;
+            padding: 150px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 30px;
+        }
+        h2 {
+            color: #333;
+            text-align: center;
+        }
+        .actions {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 30px;
+        }
+        .actions a {
+            text-decoration: none;
+            background-color: #4CAF50;
+            color: white;
+            padding: 15px 20px;
+            border-radius: 4px;
+            text-align: center;
+            font-weight: bold;
+            width: 200px;
+        }
+        .actions a:hover {
+            background-color: #45a049;
+        }
+        .actions a.delete {
+            background-color: #f44336;
+        }
+        .actions a.delete:hover {
+            background-color: #e53935;
+        }
+        .section {
+            margin-top: 40px;
+        }
+        .section h3 {
+            color: #333;
+            margin-bottom: 20px;
+        }
+        .section ul {
+            list-style-type: none;
+            padding: 0;
+        }
+        .section ul li {
+            background: #f4f4f4;
+            padding: 10px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+            box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+        }
+        .section ul li a {
+            text-decoration: none;
+            color: #333;
+        }
+        .section ul li a:hover {
+            color: #007BFF;
+        }
+    </style>
+</head>
+<body>
+
+    <body>
+
+        <div class="container">
+            <h1>Welcome to the Admin Dashboard</h1>
+            <p>Manage your site efficiently with the tools provided.</p>
+        
+            <!-- Action Buttons -->
+            <div class="actions">
+                <a href="/create_article">Create New Article</a>
+                <a href="/articles">View Articles</a>
+                <a href="/edit_article">Edit Your Articles</a> <!-- New -->
+                <a href="/delete_article" class="delete">Delete Your Articles</a> <!-- New -->
+                <a href="/comment_article">Comment on Articles</a> <!-- New -->
+                <a href="/view_recent_articles">View Most Recent Articles</a> <!-- New -->
+                <a href="/edit_profile">Edit Profile</a>
+                <a href="/logout" class="delete">Logout</a>
+            </div>
+        
+            <!-- Recent Articles Section -->
+            <div class="section">
+                <h3>Recent Articles</h3>
+                <ul>
+                    {% for article in recent_articles %}
+                    <li>
+                        <a href="/article/{{ article.id }}">{{ article.title }}</a> - {{ article.date_created }}
+                        <!-- Optional: Add Category/Tag -->
+                        {% if article.category %}
+                        <span>(Category: {{ article.category }})</span>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        
+            <!-- User Notifications Section -->
+            <div class="section">
+                <h3>User Notifications</h3>
+                <ul>
+                    {% for notification in notifications %}
+                    <li>{{ notification.message }} - {{ notification.date }}</li>
+                    {% endfor %}
+                </ul>
+            </div>
+        
+            <!-- Optional: Comment Section -->
+            <div class="section">
+                <h3>Article Comments</h3>
+                <ul>
+                    {% for comment in comments %}
+                    <li>
+                        {{ comment.text }} - {{ comment.date }}
+                        {% if comment.flagged %}
+                        <span style="color:red;">(Flagged as Inappropriate)</span>
+                        {% endif %}
+                    </li>
+                    {% endfor %}
+                </ul>
+            </div>
+        </div>
+        
+        </body>
+        </html>

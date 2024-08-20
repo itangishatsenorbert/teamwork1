@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign Up</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+    <div class="navbar">
+        <div class="logo">
+            <a href="#" style="color: hwb(240 93% 4%);">
+                <img src="{{ url_for('static', filename='image/log2.jpeg') }}" alt="TechnoInsight Logo" style="height: 50px;">
+            </a>
+        </div>
+        <div class="menu">
+            <a href="/">Home</a>
+            <a href="/signup">Sign Up</a>
+            <a href="/login">Log In</a>
+            <a href="/about">About</a>
+        </div>
+    </div>
+    <div class="form-container">
+        <h2>Sign Up</h2>
+        <form action="/signup" method="POST">
+            <label for="username">Username</label>
+            <input type="text" id="username" name="username" required>
+            
+            <label for="email">Email</label>
+            <input type="email" id="email" name="email" required>
+            
+            <label for="password">Password</label>
+            <input type="password" id="password" name="password" required>
+            
+            <button type="submit">Sign Up</button>
+        </form>
+    </div>
+</body>
+</html>
